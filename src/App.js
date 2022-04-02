@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from "react";
+import ProductCardGrid from "./components/product-card-grid/ProductCardGrid";
 
 function App() {
+  const [products, setProducts] = useState([]);
+
+
+  useEffect(() => {
+    const getProducts = async () => {
+      const data = await fetch('https://fakestoreapi.com/products')
+      const response = await data.json()
+      setProducts(response)
+    }
+    getProducts().catch(console.error)
+  },[])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <ProductCardGrid products={products} />
+      
     </div>
   );
 }
