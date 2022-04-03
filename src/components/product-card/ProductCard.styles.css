@@ -8,6 +8,7 @@
   border-radius: 10px;
   align-items: center;
   transition: all 0.2s ease-in-out;
+  background-color: white;
 }
 .product-card-container:hover {
   transform: scale(1.05);
