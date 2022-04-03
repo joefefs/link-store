@@ -8,12 +8,14 @@ function ProductDetails() {
   const [product, setProduct] = useState({});
   const { image, rating, title, price, description } = product;
 
+  //useLocation() hook to access state in the Link component which is storing the clicked product's id.
   const location = useLocation();
   const productPath = location.state;
 
   useEffect(() => {
     // async function to fetch products and set them on state variavle product
     const getProduct = async () => {
+      //passing the productPath (product id), to fetch that products details.
       const data = await fetch(
         `https://fakestoreapi.com/products/${productPath}`
       );
